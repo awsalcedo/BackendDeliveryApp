@@ -1,0 +1,16 @@
+{
+  "name": "nodedeliveryserver",
+  "version": "1.0.0",
+  "description": "Backend de la aplicacion delivery",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flutter",
+    "delivery",
+    "nodejs"
+  ],
+  "author": "Alex Wladimir Salcedo Silva",
+  "license": "MIT"
+}
