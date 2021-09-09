@@ -27,7 +27,7 @@ app.disable('x-powered-by');
  */
 users(app);
 
-server.listen(3000, '10.21.186.53' || 'localhost', function() {
+server.listen(3000, '192.168.100.88' || 'localhost', function() {
     console.log('Aplicacion de NodeJS ' + port + ' Iniciada...');
 });
 
