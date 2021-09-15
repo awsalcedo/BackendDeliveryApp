@@ -44,3 +44,10 @@ CREATE TABLE user_has_roles(
     FOREIGN KEY(id_rol) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY(id_user, id_rol)
 );
+
+
+//Urls de imagenes usadas
+Repartidor: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRouQuDRu9LwDu0gUln7FU_bKYPxG9ioESHQw&usqp=CAU
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzMemj847xRLY493Syw4NgxuVopwS4xEgqXg&usqp=CAU
+Restaurant: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLaKNJBLvl0m9xWAL0AOBoPX3koipQKi1bGg&usqp=CAU
+Cliente: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrRjdTIH84oC8jmUuaOuRim19hwzKhBHgFIg&usqp=CAU
