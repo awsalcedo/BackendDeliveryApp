@@ -48,7 +48,7 @@ module.exports = {
     // Insertar datos de usuario con imagenes
     async registerWithImage(req, res, next) {
         try {
-            const user = JSON.password(req.body.user);
+            const user = JSON.parse(req.body.user);
             console.log(`Datos enviados del usuario: ${user}`);
 
             // Recibir el archivo a almacenar
