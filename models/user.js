@@ -73,4 +73,12 @@ User.findByUserId = (id) => {
     return db.oneOrNone(sql, id);
 }
 
+User.updateToken = (id, token) => {
+    const sql = `UPDATE users set session_token = $2 WHERE id = $1`;
+    return db.none(sql, [
+        id,
+        token
+    ]);
+}
+
 module.exports = User;
