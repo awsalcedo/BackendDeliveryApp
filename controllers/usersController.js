@@ -134,6 +134,59 @@ module.exports = {
                 error: error
             });
         }
+    },
+
+    // Actualizar datos de usuario
+    async update(req, res, next) {
+        try {
+            const user = JSON.parse(req.body.user);
+            console.log(`Datos enviados del usuario: ${JSON.stringify(user)}`);
+
+            // Recibir el archivo a almacenar
+            const files = req.files;
+            if (files.length > 0) {
+                // Crear el nombre con el que se almacenara la imagen en Firebase Storage
+                const pathImage = `image_${Date.now()}`;
+
+                // Obtener la url del archivo almacenado
+                const url = await storage(files[0],  pathImage);
+
+                if (url != undefined && url != null) {
+                    user.image = url;
+                }
+            }
+
+            await User.update(user);
+
+            return res.status(201).json({
+                success: true,
+                message: 'El usuario se actulizó correctamente'
+            });
+        } catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error con la actualización de datos del usuario',
+                error: error
+            });
+        }
+    },
+
+    async findById(req, res, next) {
+        try {
+            //Obtener el id del usuario
+            const id = req.params.id;
+             
+            const data = await User.findByUserId(id);
+            console.log(`Usuario: ${data}`);
+            return res.status(201).json(data);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Error al obtener el usuario por ID'
+            });
+        }
     }
 
 
