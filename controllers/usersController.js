@@ -99,7 +99,8 @@ module.exports = {
 
             if (User.isPasswordMatched(password, myUser.password)) {
                 const token = jwt.sign({ id: myUser.id, email: myUser.email }, keys.secretOrKey, {
-                    //expiresIn: (60*60*24) // 1 HORA
+                    expiresIn: (60*60*24) // Expiración del token en 1 HORA
+                    //expiresIn: (60*2) // Expiración del token en 2 MINUTOS
                 });
                 const data = {
                     id: myUser.id,
@@ -189,7 +190,26 @@ module.exports = {
                 message: 'Error al obtener el usuario por ID'
             });
         }
-    }
+    },
 
+    async logout(req, res, next) {
+        try {
+            const id = req.body.id;
+            await User.updateToken(id, null);
+
+            return res.status(201).json({
+                success: true,
+                message: 'La sesión del usuario de ha cerrado correctamente'
+            });
+
+        } catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Error al momento de cerrar sesión',
+                error: error
+            });
+        }
+    }
 
 };
