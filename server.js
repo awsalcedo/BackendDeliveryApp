@@ -27,7 +27,7 @@ const upload = multer({
  * Rutas
  */
 const users = require('./routes/usersRoutes');
-
+const categories = require('./routes/categoriesRoutes');
 
 app.set('port', port);
 
@@ -48,6 +48,7 @@ app.disable('x-powered-by');
  * Llamando a las rutas
  */
 users(app, upload);
+categories(app);
 
 server.listen(3000, '192.168.100.88' || 'localhost', function() {
     console.log('Aplicacion de NodeJS ' + port + ' Iniciada...');

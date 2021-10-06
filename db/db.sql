@@ -45,6 +45,14 @@ CREATE TABLE user_has_roles(
     PRIMARY KEY(id_user, id_rol)
 );
 
+DROP TABLE IF EXISTS categories CASCADE;
+CREATE TABLE categories(
+	id BIGSERIAL PRIMARY KEY,
+	name VARCHAR(180) NOT NULL UNIQUE,
+	description VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP(0) NOT NULL,
+	updated_at TIMESTAMP(0) NOT NULL
+);
 
 //Urls de imagenes usadas
 Repartidor: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRouQuDRu9LwDu0gUln7FU_bKYPxG9ioESHQw&usqp=CAU
