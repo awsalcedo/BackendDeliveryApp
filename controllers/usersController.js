@@ -57,7 +57,7 @@ module.exports = {
                 // Crear el nombre con el que se almacenara la imagen en Firebase Storage
                 const pathImage = `image_${Date.now()}`;
 
-                // Obtener la url del archivo almacenado
+                // Almacenar el archivo de imagen en Firebase y obtener la url del archivo almacenado
                 const url = await storage(files[0],  pathImage);
 
                 if (url != undefined && url != null) {

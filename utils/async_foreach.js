@@ -1,5 +1,5 @@
 /**
- * Bucle asincrono para esperar hasta que un proceso termine hasta la siguiente tarea
+ * Permite almacenar varias imagenes mediante un bucle asincrono
  * 
  */
 
