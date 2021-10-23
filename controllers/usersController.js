@@ -51,6 +51,15 @@ module.exports = {
             const user = JSON.parse(req.body.user);
             console.log(`Datos enviados del usuario: ${user}`);
 
+            // Control para verificar si el correo ya existe
+            const myUser = await User.findByEmail(user.email);
+            if (myUser) {
+                return res.status(401).json({
+                    success: false,
+                    message: 'El email ya existe'
+                });
+            }
+
             // Recibir el archivo a almacenar
             const files = req.files;
             if (files.length > 0) {
