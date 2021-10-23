@@ -26,6 +26,7 @@ module.exports = {
     async getAll(req, res, next) {
         try {
             const data = await Category.getAll();
+            console.log(`Categorías: ${JSON.stringify(data)}`);
             return res.status(201).json(data);
         } catch (error) {
             console.log(`Error: ${error}`);
