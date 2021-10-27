@@ -4,7 +4,7 @@ module.exports = {
     async create(req, res, next) {
         try {
             const address = req.body;
-            const data = await CatAddressgory.create(address);
+            const data = await Address.create(address);
 
             return res.status(201).json({
                 message: 'La dirección fue creada correctamente',
