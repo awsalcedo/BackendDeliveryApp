@@ -3,10 +3,10 @@ const passport = require('passport');
 
 module.exports = (app) => {
 
-    /**
-     * Get routes
-     */
-     //app.get('/api/categories/getAll', passport.authenticate('jwt', {session: false}), CategoriesController.getAll);
+     /*
+    * GET ROUTES
+    */
+   app.get('/api/address/findByUser/:id_user', passport.authenticate('jwt', {session: false}), AddressController.findByUser);
 
     /**
      * Post routes
