@@ -30,6 +30,7 @@ const users = require('./routes/usersRoutes');
 const categories = require('./routes/categoriesRoutes');
 const products = require('./routes/productsRoutes');
 const address = require('./routes/addressRoutes');
+const orders = require('./routes/ordersRoutes');
 
 app.set('port', port);
 
@@ -52,6 +53,7 @@ app.disable('x-powered-by');
 users(app, upload);
 categories(app);
 address(app);
+orders(app);
 products(app, upload);
 
 server.listen(3000, '192.168.100.88' || 'localhost', function() {
