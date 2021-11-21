@@ -62,7 +62,7 @@ module.exports = {
 
             return res.status(201).json({
                 success: true,
-                message: 'La orden se actualizo correctamente',
+                message: 'La orden se actualizó correctamente',
             });
 
         } 
@@ -108,7 +108,32 @@ module.exports = {
 
             return res.status(201).json({
                 success: true,
-                message: 'La orden se actualizo correctamente',
+                message: 'La orden se actualizó correctamente',
+            });
+
+        } 
+        catch (error) {
+            console.log(`Error ${error}`);    
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error al actualizar la orden',
+                error: error
+            });
+        }
+    },
+
+    async updateToDeliveredStatus(req, res, next) {
+        try {
+            
+            let order = req.body;
+            order.status = 'ENTREGADO';
+            // Actualizar los datos de la orden
+            await Order.update(order);
+            
+
+            return res.status(201).json({
+                success: true,
+                message: 'La orden se actualizó correctamente',
             });
 
         } 
