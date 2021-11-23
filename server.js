@@ -9,6 +9,12 @@ const multer = require('multer');
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 const passport = require('passport');
+const io = require('socket.io')(server);
+
+/*
+* Sockets
+*/
+const orderDeliverySocket = require('./sockets/orders_delivery_socket');
 
 /*
  * Inicializar Firebase Admin
@@ -46,6 +52,9 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.disable('x-powered-by');
+
+// Llamar al socket
+orderDeliverySocket(io);
 
 /*
  * Llamando a las rutas
