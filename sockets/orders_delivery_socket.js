@@ -12,7 +12,7 @@ module.exports = (io) => {
         console.log('USUARIO CONECTADO AL NAMESPACE /orders/delivery');
 
         socket.on('position_delivery', function(data) {
-            console.log(`EMITIO ${JSON.stringify(data)}`);
+            console.log(`DELIVERY EMITIO ${JSON.stringify(data)}`);
             // Permite emitir al cliente específico la posición del repartidor
             orderDeliveryNamespace.emit(`position_delivery/${data.id_order}`, { lat: data.lat, lng: data.lng  });
         });
