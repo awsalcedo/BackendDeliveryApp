@@ -168,4 +168,29 @@ module.exports = {
 
     },
 
+    async updateLatLngDelivery(req, res, next) {
+        try {
+            
+            let order = req.body;
+
+            // Actualizar los datos de la orden
+            await Order.updateLatLngDelivery(order);
+            
+
+            return res.status(201).json({
+                success: true,
+                message: 'La orden se actualizó correctamente',
+            });
+
+        } 
+        catch (error) {
+            console.log(`Error ${error}`);    
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error al actualizar la orden',
+                error: error
+            });
+        }
+    },
+
 }

@@ -245,5 +245,14 @@ Order.findByClientAndStatus = (id_client, status) => {
 
 }
 
+Order.updateLatLngDelivery = (order) => {
+    const sql = `UPDATE orders SET lat = $2, lng = $3 WHERE id = $1`;
+    return db.none(sql, [
+        order.id,
+        order.lat,
+        order.lng
+    ]);
+}
+
 
 module.exports = Order;
