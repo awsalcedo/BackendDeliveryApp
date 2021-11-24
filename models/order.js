@@ -182,6 +182,8 @@ Order.findByClientAndStatus = (id_client, status) => {
         O.id_delivery,
         O.status,
         O.timestamp,
+        O.lat,
+        O.lng,
         JSON_AGG(
             JSON_BUILD_OBJECT(
                 'id', P.id,
