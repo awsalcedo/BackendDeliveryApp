@@ -10,6 +10,14 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 const passport = require('passport');
 const io = require('socket.io')(server);
+const mercadopago = require('mercadopago');
+
+/*
+* Configuración Mercado Pago
+*/
+mercadopago.configure({
+    access_token: 'TEST-6028900970379574-062302-e3e5d11b7871ee742832e6351694608f-191014229'
+});
 
 /*
 * Sockets
