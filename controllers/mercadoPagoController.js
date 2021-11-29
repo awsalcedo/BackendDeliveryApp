@@ -54,7 +54,6 @@ module.exports = {
 
                 let order = payment.order;
 
-
                 order.status = 'PAGADO';
                 const orderData = await Order.create(order);
                 
@@ -70,7 +69,7 @@ module.exports = {
         }
         else {
             return res.status(501).json({
-                message: 'Error algun dato esta mal en la peticion',
+                message: 'Error algún dato esta mal en la petición',
                 success: false
             });
         }

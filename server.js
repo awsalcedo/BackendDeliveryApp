@@ -45,6 +45,7 @@ const categories = require('./routes/categoriesRoutes');
 const products = require('./routes/productsRoutes');
 const address = require('./routes/addressRoutes');
 const orders = require('./routes/ordersRoutes');
+const mercadoPagoRoutes = require('./routes/mercadoPagoRoutes');
 
 app.set('port', port);
 
@@ -72,6 +73,7 @@ categories(app);
 address(app);
 orders(app);
 products(app, upload);
+mercadoPagoRoutes(app);
 
 server.listen(3000, '192.168.100.88' || 'localhost', function() {
     console.log('Aplicacion de NodeJS ' + port + ' Iniciada...');
