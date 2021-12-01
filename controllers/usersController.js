@@ -235,6 +235,33 @@ module.exports = {
                 message: 'Error al obtener los repartidores'
             });
         }
-    }
+    },
+
+    // Actualizar el token de notificación del usuario
+    async updateNotificationToken(req, res, next) {
+        try {
+            
+            const body = req.body;
+            console.log('Datos enviados del usuario: ', body);
+
+            await User.updateNotificationToken(body.id, body.notification_token);
+
+            return res.status(201).json({
+                success: true,
+                message: 'El token de notificaciones se ha almacenado correctamente'
+            });
+
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error con la actualización del token de notificación del usuario',
+                error: error
+            });
+        }
+    },
+
+
 
 };

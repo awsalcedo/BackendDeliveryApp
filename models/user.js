@@ -8,13 +8,13 @@ User.getAll = () => {
 }
 
 User.findById = (id, callback) => {
-    const sql = `SELECT id, email, name, lastname, image, phone, password, session_token FROM users WHERE id = $1`;
+    const sql = `SELECT id, email, name, lastname, image, phone, password, session_token, notification_token FROM users WHERE id = $1`;
     return db.oneOrNone(sql, id).then(user => { callback(null, user); })
 }
 
 
 User.findByEmail = (email) => {
-    const sql = `SELECT U.id, U.email, U.name, U.lastname, U.image, U.phone, U.password, U.session_token,
+    const sql = `SELECT U.id, U.email, U.name, U.lastname, U.image, U.phone, U.password, U.session_token, U.notification_token,
     json_agg(json_build_object(
         'id', R.id,
         'name', R.name,
@@ -59,7 +59,7 @@ User.update = (user) => {
 }
 
 User.findByUserId = (id) => {
-    const sql = `SELECT U.id, U.email, U.name, U.lastname, U.image, U.phone, U.password, U.session_token,
+    const sql = `SELECT U.id, U.email, U.name, U.lastname, U.image, U.phone, U.password, U.session_token, U.notification_token,
     json_agg(json_build_object(
         'id', R.id,
         'name', R.name,
@@ -91,7 +91,8 @@ User.findDelivery = () => {
         U.image,
         U.phone,
         U.password,
-        U.session_token
+        U.session_token,
+        U.notification_token
     FROM
         users AS U
     INNER JOIN
@@ -106,6 +107,22 @@ User.findDelivery = () => {
         R.id = 3  
     `;
     return db.manyOrNone(sql);
+}
+
+User.updateNotificationToken = (id, token) => {
+    const sql = `
+    UPDATE
+        users
+    SET
+        notification_token = $2
+    WHERE
+        id = $1
+    `;
+
+    return db.none(sql, [
+        id,
+        token
+    ]);
 }
 
 module.exports = User;

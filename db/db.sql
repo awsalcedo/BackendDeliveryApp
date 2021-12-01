@@ -27,6 +27,7 @@ CREATE TABLE users(
 	lastname VARCHAR(255) NOT NULL,
 	phone VARCHAR(80) NOT NULL UNIQUE,
 	image VARCHAR(255) NULL,
+	notification_token VARCHAR(255) NULL,
 	password VARCHAR(255) NOT NULL,
 	is_available BOOLEAN NULL,
 	session_token VARCHAR(255) NULL,
