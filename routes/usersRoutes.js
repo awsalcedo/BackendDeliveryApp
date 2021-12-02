@@ -6,6 +6,7 @@ module.exports = (app, upload) => {
     app.get('/api/users/getAll', UsersController.getAll);
     app.get('/api/users/findById/:id', passport.authenticate('jwt', {session: false}), UsersController.findById);
     app.get('/api/users/findDelivery', passport.authenticate('jwt', {session: false}), UsersController.findDelivery);
+    app.get('/api/users/getAdminsNotificationTokens', passport.authenticate('jwt', {session: false}), UsersController.getAdminsNotificationTokens);
 
     // Guardar datos
     app.post('/api/users/create', upload.array('image', 1), UsersController.registerWithImage); // Solo una imagen
